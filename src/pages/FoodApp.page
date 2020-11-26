@@ -1,0 +1,46 @@
+<apex:page controller="FoodAppController" standardStylesheets="false" showHeader="false">
+    <apex:stylesheet value="{!URLFOR($Resource.BootStrap3, '/bootstrap-3.3.7-dist/css/bootstrap.css')}" />
+    <script>
+      function redi(){
+         sforce.one.createRecord('Event', null);
+      }
+   </script>  
+    <div class="container">
+        <div >
+            <div class="col-md-12 column"  html-background="{!$Resource.Background}">
+                <div class="alert alert-info">
+              
+                    <h1>PG2 - The Food App  </h1>
+                    
+                </div>
+                <div class="alert alert-success">
+                   
+                    <body style=" background-image:url('{!$Resource.Background}');" background-repeat="no-repeat" background-attachment="fixed" background-position="center">
+                        <apex:pageMessages ></apex:pageMessages>
+                        <apex:form html-background="{!$Resource.Background}">
+                             
+                            
+                            <p><br/>
+                            <label class="btn btn-primary" >Please select the Choose File to Scan the Food
+                            <apex:inputFile value="{!Attach}" accept="image/*;capture=camera" StyleClass="btn btn-primary" />
+                            </label>
+                            </p>
+                            <p>
+                                <apex:commandButton StyleClass="btn btn btn-info" action="{!Calculate}" value="Calculate Calories" /> &nbsp;                            
+                                <apex:commandButton StyleClass="btn btn-success" action="{!saveFile}" value=" Submit " /> &nbsp;  
+                                <apex:commandButton StyleClass="btn btn-warning" action="{!Cancel}" value=" Cancel " />
+                            </p>
+                            <apex:outputLabel rendered="{!openPanel}">
+                                Name : {!foodpro.Name} <br/>
+                                Calories : {!foodpro.Calories__c} <br/>
+                                Weight : {!foodpro.Weight__c} <br/>                           
+                            </apex:outputLabel>
+                        </apex:form>
+                        
+                        </body>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</apex:page>
